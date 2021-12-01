@@ -76,7 +76,7 @@ describe('01/basic api worked', () => {
     expect(val).toBe(false);
   });
 
-  test('emitter.one should only reigester one time', () => {
+  test('emitter.one should only register one time', () => {
     const emitter = new WinEvtEmitt();
     let val = 0;
     emitter.one('abc', () => {

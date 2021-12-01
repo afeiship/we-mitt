@@ -1,15 +1,38 @@
-interface EventResource {
+interface DestroyableResource {
   destroy: () => void;
 }
 
 interface EventMitt {
-  on(name: string, handler: Function): EventResource;
-  one(name: string, handler: Function): EventResource;
+  /**
+   * Attach event and return the event resource.
+   * @param name
+   * @param handler
+   */
+  on(name: string, handler: Function): DestroyableResource;
+  /**
+   * Detach event.
+   * @param name
+   * @param handler
+   */
   off(name: string, handler: Function): void;
+  /**
+   * Trigger event by name.
+   * @param name
+   * @param data
+   */
   emit(name: string, data?): void;
 }
 
-export default class implements EventMitt {
+interface EventMittExtension {
+  /**
+   * Attach event, but only can attach one time.
+   * @param name
+   * @param handler
+   */
+  one(name: string, handler: Function): DestroyableResource;
+}
+
+export default class implements EventMitt, EventMittExtension {
   private ONE_CACHE = {};
 
   on(inName, inHandler) {
