@@ -3,15 +3,15 @@ import WinEvtEmitt from '../src';
 describe('01/basic api worked', () => {
   test('emitter.on one times', (done) => {
     const emitter = new WinEvtEmitt();
-    let ifeabc = false;
+    let val = false;
 
     const res = emitter.on('abc', () => {
-      ifeabc = true;
-      expect(ifeabc).toBe(true);
+      val = true;
+      expect(val).toBe(true);
     });
 
     setTimeout(() => {
-      expect(ifeabc).toBe(false);
+      expect(val).toBe(false);
       emitter.emit('abc');
       res.destroy();
       done();
@@ -20,20 +20,20 @@ describe('01/basic api worked', () => {
 
   test('emitter.on multiple times', (done) => {
     const emitter = new WinEvtEmitt();
-    let counter = 0;
+    let val = 0;
 
     const res1 = emitter.on('abc', () => {
-      counter++;
-      expect(counter).toBe(1);
+      val++;
+      expect(val).toBe(1);
     });
 
     const res2 = emitter.on('abc', () => {
-      counter++;
-      expect(counter).toBe(2);
+      val++;
+      expect(val).toBe(2);
     });
 
     setTimeout(() => {
-      expect(counter).toBe(0);
+      expect(val).toBe(0);
       emitter.emit('abc');
       res1.destroy();
       res2.destroy();
@@ -43,18 +43,18 @@ describe('01/basic api worked', () => {
 
   test('emitter.on one time, trigger multple times', (done) => {
     const emitter = new WinEvtEmitt();
-    let counter = 0;
+    let val = 0;
 
     const res = emitter.on('abc', () => {
-      counter++;
+      val++;
     });
 
     setTimeout(() => {
-      expect(counter).toBe(0);
+      expect(val).toBe(0);
       emitter.emit('abc');
       emitter.emit('abc');
       emitter.emit('abc');
-      expect(counter).toBe(3);
+      expect(val).toBe(3);
       res.destroy();
       done();
     }, 100);
@@ -73,7 +73,7 @@ describe('01/basic api worked', () => {
     expect(val).toBe(false);
   });
 
-  test.only('emitter.one should only reigester one time', () => {
+  test('emitter.one should only reigester one time', () => {
     const emitter = new WinEvtEmitt();
     let val = 0;
     emitter.one('abc', () => {

@@ -12,7 +12,7 @@ export default class {
   }
 
   on(inName, inHandler) {
-    const handler = (event) => {
+    const handler = (event: any) => {
       const { detail } = event;
       inHandler(detail);
     };
@@ -27,15 +27,18 @@ export default class {
       }
     };
   }
+
   off(inName, inHandler) {
     this.emitter.on(inName, inHandler);
     return window.removeEventListener(inName, inHandler, false);
   }
+
   emit(inName, inData?) {
     const event = new CustomEvent(inName, { detail: inData });
     window.dispatchEvent(event);
     this.emitter.emit(inName, inData);
   }
+
   one(inName, inHandler) {
     var map = (this._events = this._events || {});
     var listeners = map[inName];

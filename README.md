@@ -13,10 +13,25 @@ npm install @jswork/winevt-emit
 
 ## usage
 ```js
-import winevtEmit from '@jswork/winevt-emit';
+import WinevtEmit from '@jswork/winevt-emit';
 
-// usage goes here.
+const wemiter = new WinevtEmit();
+// on
+const res = wemiter.on('abc', ()=>{
+  console.log('attach abc event');
+});
+// do something...
+// detatch
+res.destory();
 ```
+
+## apis
+| name | params       | description                          |
+| ---- | ------------ | ------------------------------------ |
+| on   | name,handler | register an event                    |
+| off  | name,handler | unregister an event                  |
+| emit | name,obj     | fire an event                        |
+| one  | name,obj     | fire an event,only can register once |
 
 ## license
 Code released under [the MIT license](https://github.com/afeiship/winevt-emit/blob/master/LICENSE.txt).
