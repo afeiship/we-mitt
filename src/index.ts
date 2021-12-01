@@ -1,8 +1,19 @@
-export default class {
+interface EventResource {
+  destroy: () => void;
+}
+
+interface EventMitt {
+  on(name: string, handler: Function): EventResource;
+  one(name: string, handler: Function): EventResource;
+  off(name: string, handler: Function): void;
+  emit(name: string, data?): void;
+}
+
+export default class implements EventMitt {
   private ONE_CACHE = {};
 
   on(inName, inHandler) {
-    const handler = (event: any) => {
+    const handler = (event: CustomEvent) => {
       const { detail } = event;
       inHandler(detail);
     };
@@ -14,15 +25,6 @@ export default class {
         return this.off(inName, handler);
       }
     };
-  }
-
-  off(inName, inHandler) {
-    return window.removeEventListener(inName, inHandler, false);
-  }
-
-  emit(inName, inData?) {
-    const event = new CustomEvent(inName, { detail: inData });
-    window.dispatchEvent(event);
   }
 
   one(inName, inHandler) {
@@ -37,5 +39,14 @@ export default class {
         this.off(inName, inHandler);
       }
     };
+  }
+
+  off(inName, inHandler) {
+    return window.removeEventListener(inName, inHandler, false);
+  }
+
+  emit(inName, inData?) {
+    const event = new CustomEvent(inName, { detail: inData });
+    window.dispatchEvent(event);
   }
 }
