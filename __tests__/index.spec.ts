@@ -59,4 +59,17 @@ describe('01/basic api worked', () => {
       done();
     }, 100);
   });
+
+  test('emitter.off should rm handler', () => {
+    const emitter = new WinEvtEmitt();
+    let val = false;
+    const handler = () => {
+      val = true;
+    };
+
+    expect(val).toBe(false);
+    emitter.on('abc', handler);
+    emitter.off('abc', handler);
+    expect(val).toBe(false);
+  });
 });
