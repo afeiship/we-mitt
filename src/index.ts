@@ -23,7 +23,7 @@ interface EventMitt {
   emit(name: string, data?): void;
 }
 
-interface EventMittExtension {
+interface EventMittExtension extends EventMitt {
   /**
    * Attach event, but only can attach one time.
    * @param name
@@ -32,7 +32,7 @@ interface EventMittExtension {
   one(name: string, handler: Function): DestroyableResource;
 }
 
-export default class implements EventMitt, EventMittExtension {
+export default class implements EventMittExtension {
   private ONE_CACHE = {};
 
   on(inName, inHandler) {
