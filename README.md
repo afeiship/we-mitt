@@ -17,10 +17,13 @@ import WinevtEmit from '@jswork/winevt-mitt';
 
 const wemiter = new WinevtEmit();
 // on
-const res = wemiter.on('abc', ()=>{
-  console.log('attach abc event');
+const res = wemiter.on('abc', (data)=>{
+  console.log('attach abc event', data);
 });
+
 // do something...
+wemiter.emit('abc', { id: 1, name: 'xx' });
+
 // detatch
 res.destory();
 ```
