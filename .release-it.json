@@ -11,8 +11,5 @@
     "after:bump": [
       "npm run build"
     ]
-  },
-  "github": {
-    "release": true
   }
 }
