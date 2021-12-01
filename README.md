@@ -1,67 +1,34 @@
-# react-mui-radio
-> Radio for mui
+# winevt-emit
+> Global(window) event emitter.
 
-## properties:
-```javascript
+[![version][version-image]][version-url]
+[![license][license-image]][license-url]
+[![size][size-image]][size-url]
+[![download][download-image]][download-url]
 
-  static propTypes = {
-    className: PropTypes.string,
-    onChange: PropTypes.func,
-  };
-
-  static defaultProps = {
-    onChange: noop
-  };
-  
+## installation
+```shell
+npm install @jswork/winevt-emit
 ```
 
-## install && import:
-```bash
-npm install --save afeiship/react-mui-radio --registry=https://registry.npm.taobao.org
-```
-
+## usage
 ```js
-import ReactMuiRadio from 'react-mui-radio';
+import winevtEmit from '@jswork/winevt-emit';
+
+// usage goes here.
 ```
 
-```scss
-// customize your styles:
-$react-mui-radio-options:(
-);
+## license
+Code released under [the MIT license](https://github.com/afeiship/winevt-emit/blob/master/LICENSE.txt).
 
-@import 'node_modules/react-mui-radio/dist/style.scss';
-```
+[version-image]: https://img.shields.io/npm/v/@jswork/winevt-emit
+[version-url]: https://npmjs.org/package/@jswork/winevt-emit
 
+[license-image]: https://img.shields.io/npm/l/@jswork/winevt-emit
+[license-url]: https://github.com/afeiship/winevt-emit/blob/master/LICENSE.txt
 
-## usage:
-```jsx
+[size-image]: https://img.shields.io/bundlephobia/minzip/@jswork/winevt-emit
+[size-url]: https://github.com/afeiship/winevt-emit/blob/master/dist/winevt-emit.min.js
 
-// install: npm install afeiship/react-mui-radio --save
-// import : import ReactMuiRadio from 'react-mui-radio'
-
-class App extends React.Component{
-  state = {
-
-  };
-
-  constructor(props){
-    super(props);
-    window.demo = this;
-    window.refs = this.refs;
-    window.rc = this.refs.rc;
-  }
-
-  _onChange = e =>{
-    console.log('checked!', e.target.value);
-  };
-
-  render(){
-    return (
-      <div className="hello-react-mui-radio">
-        <ReactMuiRadio onChange={this._onChange} ref='rc' />
-      </div>
-    );
-  }
-}
-
-```
+[download-image]: https://img.shields.io/npm/dm/@jswork/winevt-emit
+[download-url]: https://www.npmjs.com/package/@jswork/winevt-emit
