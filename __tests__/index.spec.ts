@@ -72,4 +72,21 @@ describe('01/basic api worked', () => {
     emitter.off('abc', handler);
     expect(val).toBe(false);
   });
+
+  test.only('emitter.one should only reigester one time', () => {
+    const emitter = new WinEvtEmitt();
+    let val = 0;
+    emitter.one('abc', () => {
+      val++;
+    });
+    emitter.one('abc', () => {
+      val++;
+    });
+    emitter.one('abc', () => {
+      val++;
+    });
+
+    emitter.emit('abc');
+    expect(val).toBe(1);
+  });
 });
