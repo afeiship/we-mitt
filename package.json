@@ -42,5 +42,12 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/afeiship/winevt-mitt.git"
-  }
+  },
+  "keywords": [
+    "window",
+    "global",
+    "event",
+    "emit",
+    "emitter"
+  ]
 }
