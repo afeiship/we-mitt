@@ -1,4 +1,4 @@
-# winevt-emit
+# winevt-mitt
 > Global(window) event emitter.
 
 [![version][version-image]][version-url]
@@ -8,12 +8,12 @@
 
 ## installation
 ```shell
-npm install @jswork/winevt-emit
+npm install @jswork/winevt-mitt
 ```
 
 ## usage
 ```js
-import WinevtEmit from '@jswork/winevt-emit';
+import WinevtEmit from '@jswork/winevt-mitt';
 
 const wemiter = new WinevtEmit();
 // on
@@ -34,16 +34,16 @@ res.destory();
 | one  | name,obj     | fire an event,only can register once |
 
 ## license
-Code released under [the MIT license](https://github.com/afeiship/winevt-emit/blob/master/LICENSE.txt).
+Code released under [the MIT license](https://github.com/afeiship/winevt-mitt/blob/master/LICENSE.txt).
 
-[version-image]: https://img.shields.io/npm/v/@jswork/winevt-emit
-[version-url]: https://npmjs.org/package/@jswork/winevt-emit
+[version-image]: https://img.shields.io/npm/v/@jswork/winevt-mitt
+[version-url]: https://npmjs.org/package/@jswork/winevt-mitt
 
-[license-image]: https://img.shields.io/npm/l/@jswork/winevt-emit
-[license-url]: https://github.com/afeiship/winevt-emit/blob/master/LICENSE.txt
+[license-image]: https://img.shields.io/npm/l/@jswork/winevt-mitt
+[license-url]: https://github.com/afeiship/winevt-mitt/blob/master/LICENSE.txt
 
-[size-image]: https://img.shields.io/bundlephobia/minzip/@jswork/winevt-emit
-[size-url]: https://github.com/afeiship/winevt-emit/blob/master/dist/winevt-emit.min.js
+[size-image]: https://img.shields.io/bundlephobia/minzip/@jswork/winevt-mitt
+[size-url]: https://github.com/afeiship/winevt-mitt/blob/master/dist/winevt-mitt.min.js
 
-[download-image]: https://img.shields.io/npm/dm/@jswork/winevt-emit
-[download-url]: https://www.npmjs.com/package/@jswork/winevt-emit
+[download-image]: https://img.shields.io/npm/dm/@jswork/winevt-mitt
+[download-url]: https://www.npmjs.com/package/@jswork/winevt-mitt

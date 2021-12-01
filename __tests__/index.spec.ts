@@ -1,4 +1,7 @@
 import WinEvtEmitt from '../src';
+/**
+ * https://developer.mozilla.org/zh-CN/docs/Web/Events/Creating_and_triggering_events
+ */
 
 describe('01/basic api worked', () => {
   test('emitter.on one times', (done) => {
