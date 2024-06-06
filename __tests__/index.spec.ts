@@ -1,4 +1,6 @@
 import WeMitt from '../src';
+import nx from '@jswork/next';
+import '@jswork/next-root-dispatch';
 /**
  * https://developer.mozilla.org/zh-CN/docs/Web/Events/Creating_and_triggering_events
  */
@@ -91,5 +93,15 @@ describe('01/basic api worked', () => {
 
     emitter.emit('abc');
     expect(val).toBe(1);
+  });
+
+  test('emitter.emit should trigger event', () => {
+    const emitter = new WeMitt();
+    let val = false;
+    emitter.on('abc', () => {
+      val = true;
+    });
+    nx.rootDispatch('abc');
+    expect(val).toBe(true);
   });
 });

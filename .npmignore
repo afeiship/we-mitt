@@ -2,7 +2,6 @@
 .DS_Store
 **/npm-debug.log
 **/node_modules
-test
 __tests__
 src
 build
@@ -16,3 +15,5 @@ jest.config.js
 babel.config.js
 yarn-error.log
 yarn.lock
+
+.ncurc.json

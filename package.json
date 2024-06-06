@@ -1,6 +1,6 @@
 {
   "name": "@jswork/we-mitt",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Global(window) event emitter.",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -17,6 +17,7 @@
     "@babel/preset-typescript": "^7.13.0",
     "@jswork/gulp-pkg-header": "^1.0.4",
     "@jswork/next": "^1.2.2",
+    "@jswork/next-root-dispatch": "^1.0.2",
     "@types/jest": "^26.0.23",
     "babel-jest": "^27.0.1",
     "del": "^5.1.0",
