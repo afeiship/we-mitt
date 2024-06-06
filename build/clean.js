@@ -1,13 +1,11 @@
-(function() {
-  'use strict';
+'use strict';
 
-  const gulp = require('gulp');
-  const $ = require('gulp-load-plugins')({
-    pattern: ['gulp-*', 'gulp.*', 'del']
-  });
+const gulp = require('gulp');
+const $ = require('gulp-load-plugins')({
+  pattern: ['gulp-*', 'gulp.*', 'del']
+});
 
-  //clean
-  gulp.task('clean', function() {
-    return $.del('dist');
-  });
-})();
+//clean
+gulp.task('clean', function() {
+  return $.del('dist');
+});
