@@ -9,18 +9,20 @@ interface EventMitt {
    * @param handler
    */
   on(name: string, handler: Function): DestroyableResource;
+
   /**
    * Detach event.
    * @param name
    * @param handler
    */
   off(name: string, handler: Function): void;
+
   /**
    * Trigger event by name.
    * @param name
    * @param data
    */
-  emit(name: string, data?): void;
+  emit(name: string, data?: Record<string, any>): boolean;
 }
 
 interface EventMittExtension extends EventMitt {
@@ -32,44 +34,45 @@ interface EventMittExtension extends EventMitt {
   one(name: string, handler: Function): DestroyableResource;
 }
 
-export default class implements EventMittExtension {
+export default class WeMitt implements EventMittExtension {
   private ONE_CACHE = {};
 
-  on(inName, inHandler) {
-    const handler = (event: CustomEvent) => {
+  on(name, handler) {
+    const callback = (event: CustomEvent) => {
       const { detail } = event;
-      inHandler(detail);
+      handler(detail);
     };
 
-    window.addEventListener(inName, handler, false);
+    window.addEventListener(name, callback, false);
 
     return {
       destroy: () => {
-        return this.off(inName, handler);
+        return this.off(name, callback);
       }
     };
   }
 
-  one(inName, inHandler) {
-    if (!this.ONE_CACHE[inName]) {
-      this.ONE_CACHE[inName] = true;
-      return this.on(inName, inHandler);
+  one(name: string, handler: any) {
+    if (!this.ONE_CACHE[name]) {
+      this.ONE_CACHE[name] = true;
+      return this.on(name, handler);
     }
 
     return {
       destroy: () => {
-        delete inHandler[inName];
-        this.off(inName, inHandler);
+        delete handler[name];
+        this.off(name, handler);
       }
     };
   }
 
-  off(inName, inHandler) {
-    return window.removeEventListener(inName, inHandler, false);
+  off(name: string, handler: any) {
+    return window.removeEventListener(name, handler, false);
   }
 
-  emit(inName, inData?) {
-    const event = new CustomEvent(inName, { detail: inData });
-    window.dispatchEvent(event);
+  emit(name: string, data?: any) {
+    const payload = typeof data === 'undefined' ? undefined : { detail: data };
+    const event = new CustomEvent(name, payload);
+    return window.dispatchEvent(event);
   }
 }

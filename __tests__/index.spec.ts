@@ -1,11 +1,11 @@
-import WinEvtEmitt from '../src';
+import WeMitt from '../src';
 /**
  * https://developer.mozilla.org/zh-CN/docs/Web/Events/Creating_and_triggering_events
  */
 
 describe('01/basic api worked', () => {
   test('emitter.on one times', (done) => {
-    const emitter = new WinEvtEmitt();
+    const emitter = new WeMitt();
     let val = false;
 
     const res = emitter.on('abc', () => {
@@ -22,7 +22,7 @@ describe('01/basic api worked', () => {
   });
 
   test('emitter.on multiple times', (done) => {
-    const emitter = new WinEvtEmitt();
+    const emitter = new WeMitt();
     let val = 0;
 
     const res1 = emitter.on('abc', () => {
@@ -45,7 +45,7 @@ describe('01/basic api worked', () => {
   });
 
   test('emitter.on one time, trigger multple times', (done) => {
-    const emitter = new WinEvtEmitt();
+    const emitter = new WeMitt();
     let val = 0;
 
     const res = emitter.on('abc', () => {
@@ -64,7 +64,7 @@ describe('01/basic api worked', () => {
   });
 
   test('emitter.off should rm handler', () => {
-    const emitter = new WinEvtEmitt();
+    const emitter = new WeMitt();
     let val = false;
     const handler = () => {
       val = true;
@@ -77,7 +77,7 @@ describe('01/basic api worked', () => {
   });
 
   test('emitter.one should only register one time', () => {
-    const emitter = new WinEvtEmitt();
+    const emitter = new WeMitt();
     let val = 0;
     emitter.one('abc', () => {
       val++;
